@@ -5,6 +5,7 @@ import { BackButton } from "~/components/BackButton";
 import "./index.css";
 import { fetchLists, updateList, deleteList } from "~/store/list";
 import { useId } from "~/hooks/useId";
+import { AppButton } from "~/components/AppButton";
 
 const EditList = () => {
   const id = useId();
@@ -19,7 +20,7 @@ const EditList = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const list = useSelector((state) =>
-    state.list.lists?.find((list) => list.id === listId),
+    state.list.lists?.find((list) => list.id === listId)
   );
 
   useEffect(() => {
@@ -50,7 +51,7 @@ const EditList = () => {
           setIsSubmitting(false);
         });
     },
-    [title, listId],
+    [title, listId]
   );
 
   const handleDelete = useCallback(() => {
@@ -92,21 +93,11 @@ const EditList = () => {
           />
         </fieldset>
         <div className="edit_list__form_actions">
-          <Link to="/" data-variant="secondary" className="app_button">
-            Cancel
-          </Link>
+          <AppButton label="Cancel" target="/" color="secondary" />
+
           <div className="edit_list__form_actions_spacer"></div>
-          <button
-            type="button"
-            className="app_button edit_list__form_actions_delete"
-            disabled={isSubmitting}
-            onClick={handleDelete}
-          >
-            Delete
-          </button>
-          <button type="submit" className="app_button" disabled={isSubmitting}>
-            Update
-          </button>
+          <AppButton label="Delete" type="button" onClick={handleDelete} />
+          <AppButton label="Update" type="submit" color="default" />
         </div>
       </form>
     </main>

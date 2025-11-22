@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import "./index.css";
 import { useSignup } from "~/hooks/useSignup";
 import { useId } from "~/hooks/useId";
+import { AppButton } from "~/components/AppButton";
 
 const SignUp = () => {
   const auth = useSelector((state) => state.auth.token !== null);
@@ -32,7 +33,7 @@ const SignUp = () => {
           setIsSubmitting(false);
         });
     },
-    [email, name, password],
+    [email, name, password]
   );
 
   if (auth) {
@@ -89,13 +90,14 @@ const SignUp = () => {
           />
         </fieldset>
         <div className="signup__form_actions">
-          <Link className="app_button" data-variant="secondary" to="/signin">
-            Login
-          </Link>
+          <AppButton label="Login" target="/signin" color="secondary" />
           <div className="signup__form_actions_spacer"></div>
-          <button type="submit" className="app_button" disabled={isSubmitting}>
-            Register
-          </button>
+          <AppButton
+            label="Register"
+            type="submit"
+            color="default"
+            disabled={isSubmitting}
+          />
         </div>
       </form>
     </main>
