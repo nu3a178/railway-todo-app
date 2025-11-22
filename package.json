@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "dependencies": {
+    "@eslint/compat": "^2.0.0",
     "@fontsource/inter": "^5.0.5",
     "@reduxjs/toolkit": "^2.7.0",
     "@testing-library/jest-dom": "^6.6.3",
@@ -11,6 +12,9 @@
     "@testing-library/user-event": "^14.6.1",
     "@unocss/reset": "^0.53.6",
     "axios": "^1.8.3",
+    "eslint": "^9.39.1",
+    "node": "24",
+    "prettier": "^3.6.2",
     "react": "^19.2.0",
     "react-cookie": "^8.0.1",
     "react-dom": "^19.2.0",
@@ -19,12 +23,20 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react-swc": "^3.3.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
     "vite": "^6.3.2"
   },
   "scripts": {
     "start": "vite",
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,md}\"",
+    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
+    "lint:fix": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --fix",
+    "format:all": "yarn format && yarn lint:fix"
   },
   "browserslist": {
     "production": [
