@@ -8,10 +8,15 @@ export const AppButton = ({
   target,
   color = "default",
   onClick,
+  disabled,
 }) => {
   if (type === "submit") {
     return (
-      <button type="submit" className={`app_button app_button_${color}`}>
+      <button
+        type="submit"
+        className={`app_button app_button_${color}`}
+        disabled={disabled}
+      >
         {label}
       </button>
     );
